@@ -40,6 +40,6 @@ nikto -h "$website"
 
 }
 
-Usage:
+ # Usage:
 
-admin_panel_finder example.com 
+# admin_panel_finder example.com 
