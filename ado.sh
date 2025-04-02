@@ -119,8 +119,9 @@ run_tool() {
     while true; do
         prompt_action
         
-        # Ask user if they want to run again
-        read -p "${CYAN}${BOLD}Would you like to run again? (y/n): ${RESET}" choice
+        # Ask user if they want to run again with properly reset color
+        echo -e "${CYAN}${BOLD}Would you like to run again? (y/n): ${RESET}"
+        read choice
         if [[ ! "$choice" =~ ^[Yy]$ ]]; then
             echo -e "${CYAN}${BOLD}Thank you for using the Caesar Cipher Tool! Goodbye.${RESET}"
             break
