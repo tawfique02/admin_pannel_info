@@ -1,3 +1,4 @@
+
 #!/bin/bash
 
 # Colors for text
@@ -25,7 +26,7 @@ cipher_text() {
     elif [[ "$action" == "decrypt" ]]; then
         shift=$((26 - shift))  # Reverse shift for decryption
     else
-        echo -e "${RED}Action must be 'encrypt' or 'decrypt'${RESET}"
+        echo -e "${RED}Error: Action must be 'encrypt' or 'decrypt'!${RESET}"
         return 1
     fi
 
@@ -57,7 +58,7 @@ cipher_text() {
         fi
     done
     
-    echo -e "$result"
+    echo -e "${CYAN}${BOLD}Result: ${RESET}$result"
 }
 
 # Function to display a cool styled button
@@ -68,29 +69,55 @@ show_button() {
 
 # Function to prompt the user for input
 prompt_action() {
-    echo -e "${YELLOW}${BOLD}Please select an action:${RESET}"
+    echo -e "${YELLOW}${BOLD}Welcome to the Caesar Cipher Tool!${RESET}"
+    echo -e "${CYAN}${BOLD}Please select an action below:${RESET}"
     show_button "Encrypt"
     show_button "Decrypt"
     
     read -p "Enter your choice (Encrypt/Decrypt): " choice
-    
     if [[ "$choice" =~ ^[Ee]ncrypt$ ]]; then
         action="encrypt"
     elif [[ "$choice" =~ ^[Dd]ecrypt$ ]]; then
         action="decrypt"
     else
-        echo -e "${RED}Invalid choice, please enter Encrypt or Decrypt!${RESET}"
+        echo -e "${RED}Invalid choice! Please enter 'Encrypt' or 'Decrypt'.${RESET}"
         return
     fi
     
-    read -p "Enter the text: " text
-    read -p "Enter the shift value (e.g., 3): " shift_value
+    # Input validation for text
+    read -p "Enter the text to $action: " text
+    if [[ -z "$text" ]]; then
+        echo -e "${RED}Error: You must provide some text.${RESET}"
+        return
+    fi
     
-    # Call cipher_text function with user's inputs
-    result=$(cipher_text "$text" "$shift_value" "$action")
+    # Input validation for shift value
+    while true; do
+        read -p "Enter the shift value (e.g., 3): " shift_value
+        if [[ "$shift_value" =~ ^[0-9]+$ ]]; then
+            break
+        else
+            echo -e "${RED}Error: Please enter a valid number for the shift value!${RESET}"
+        fi
+    done
     
-    echo -e "${CYAN}${BOLD}Result:${RESET} $result"
+    # Call cipher_text function with user inputs
+    cipher_text "$text" "$shift_value" "$action"
+}
+
+# Option to keep running the tool or exit
+run_tool() {
+    while true; do
+        prompt_action
+        
+        # Ask user if they want to run again
+        read -p "${CYAN}${BOLD}Would you like to run again? (y/n): ${RESET}" choice
+        if [[ ! "$choice" =~ ^[Yy]$ ]]; then
+            echo -e "${CYAN}${BOLD}Thank you for using the Caesar Cipher Tool! Goodbye.${RESET}"
+            break
+        fi
+    done
 }
 
 # Start the script with a prompt for action
-prompt_action
+run_tool
