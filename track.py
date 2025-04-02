@@ -88,7 +88,7 @@ if __name__ == "__main__":
     
     # If no IP is provided via argument, prompt the user for input
     if not args.ip:
-        args.ip = input("\e[1;36m[?] Enter IP Address: \e[0m")
+        args.ip = input("\033[1;36m[?] Enter IP Address: \033[0m")
     
     # Validate the IP address format
     if not validate_ip(args.ip):
