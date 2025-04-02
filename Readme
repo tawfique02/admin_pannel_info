@@ -1,0 +1,41 @@
+GUIDELINE STEP BY STEP: 
+
+TO run this script in Linux at first you have to install all the pkgs properly. 
+$ sudo apt update && upgrade -y 
+$sudo apt install bash -y 
+$chmod +x file(include).sh
+$bash (include_file).sh 
+or, 
+you can try this method:
+./admin_page_finder.sh
+
+
+Termux Setup guideline: 
+
+$ apt update && apt upgrade -y 
+$ apt/pkg install bash -y 
+$ apt install git -y 
+$ apt install python -y 
+$ apt install python2 -y 
+$ apt install python3 -y 
+$ apt install lolcat -y 
+$ apt install tree -y 
+$ apt install pip -y 
+$ pip install lolcat -y 
+$ pkg install php -y 
+$ pkg install string -y 
+$ pkg install nanu -y 
+$ pkg install script -y 
+$ apt update && apt upgrade -y 
+$ pkg install java -y 
+$ pkg install sl -y 
+$ pkg install cmatrix -y 
+$ pkt/apt install curl -y 
+$ pkg/apt install nmap -y 
+$ pkg install openvpn -y 
+$ pip install mechanize -y 
+$ pip install mechanize2 -y 
+$ pip install lolcat2 -y 
+
+# This command is much enough to run this script properly by using termux.
+# If you have any questions then contact to the user admin to solve your problem . ## 
