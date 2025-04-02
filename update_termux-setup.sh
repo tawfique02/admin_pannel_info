@@ -71,4 +71,4 @@ install_packages
 
 # Script completed
 echo -e "${CYAN}${BOLD}Installation and setup are complete!${RESET}"
-display_in_box "${BOLD}This script is developed by James${RESET}"
+display_in_box "${BOLD}This script is developed by Tawfique Elahey${RESET}"
