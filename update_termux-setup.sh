@@ -23,7 +23,7 @@ display_in_box() {
 
 # Display script credit with box
 clear
-display_in_box "${BOLD}This script is developed by James${RESET}"
+display_in_box "${BOLD}This script is developed by Tawfique Elahey${RESET}"
 
 # Function to install required packages
 install_packages() {
