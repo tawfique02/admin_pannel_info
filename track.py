@@ -42,7 +42,7 @@ def display_info(data):
     if not data:
         return
     console = Console()
-    console.print(Panel.fit("[bold cyan]WHITE IP TRACER[/bold cyan]", title="[bold yellow]IP Tracking Tool[/bold yellow]", style="bold red"))
+    console.print(Panel.fit("[bold cyan]SYSTEM IP TRACER[/bold cyan]", title="[bold yellow]IP Tracking Tool[/bold yellow]", style="bold red"))
     
     table = Table(title="IP Information", box=box.DOUBLE)
     table.add_column("Field", style="bold cyan", no_wrap=True)
@@ -65,7 +65,7 @@ def display_info(data):
         table.add_row(f"[bold cyan]{key}[/bold cyan]", f"[bold magenta]{value}[/bold magenta]")
     
     console.print(table)
-    console.print(Panel.fit("[green]Developed by: White-Eagle[/green]", title="[bold yellow]Credits[/bold yellow]", style="bold blue"))
+    console.print(Panel.fit("[green]Developed by: Tawfique Elahey[/green]", title="[bold yellow]Credits[/bold yellow]", style="bold blue"))
 
 def validate_ip(ip):
     """
@@ -82,7 +82,7 @@ def validate_ip(ip):
     return re.match(regex, ip) is not None
 
 if __name__ == "__main__":
-    parser = argparse.ArgumentParser(description="Simple IP Tracer")
+    parser = argparse.ArgumentParser(description="System IP Tracer")
     parser.add_argument("ip", help="IP address to trace", nargs='?', default=None)
     args = parser.parse_args()
     
