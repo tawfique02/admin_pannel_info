@@ -1,18 +1,22 @@
-get_wifi_password_termux() {
-    if [ "$(id -u)" -ne 0 ]; then
-        echo "This script requires root privileges. Run with: sudo or su"
-        exit 1
+
+get_wifi_password_linux() {
+    # Get the current connected SSID
+    ssid=$(nmcli -t -f active,ssid dev wifi | awk -F: '$1=="yes"{print $2}')
+
+    # If no SSID is found, notify the user
+    if [ -z "$ssid" ]; then
+        echo "No active WiFi connection found."
+        return 1
     fi
 
-    WIFI_CONFIG="/data/misc/wifi/wpa_supplicant.conf"
-    
-    if [ ! -f "$WIFI_CONFIG" ]; then
-        echo "WiFi configuration file not found. Make sure your device is rooted."
-        exit 1
-    fi
+    # Get the password for the connected WiFi
+    password=$(nmcli -s -g 802-11-wireless-security.psk connection show "$ssid" 2>/dev/null)
 
-    echo "Saved WiFi Networks and Passwords:"
-    echo "----------------------------------"
-    
-    grep -E 'ssid|psk' "$WIFI_CONFIG" | sed -e 's/ssid=/WiFi Name: /' -e 's/psk=/Password: /' | sed 's/"//g'
+    # If no password is found, print a message
+    if [ -z "$password" ]; then
+        echo "No password found for SSID: $ssid (It might be an open network or stored elsewhere)"
+    else
+        echo "Connected WiFi Network: $ssid"
+        echo "Password: $password"
+    fi
 }
