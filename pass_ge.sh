@@ -23,15 +23,15 @@ GREEN="\033[32m"
 # Reset the color back to default
 RESET="\033[0m"
 
-# Print the banner with 'CYPG' in ASCII characters
+# Cool filled ASCII art for CYPG
 echo -e "${GREEN}============================================="
-echo -e "   ██████   ██    ██  ███████   ██████   "
-echo -e "  ██    ██  ██    ██  ██    ██  ██    ██  "
-echo -e "  ██    ██  ██    ██  ███████   ██████    "
-echo -e "  ██    ██  ██    ██  ██   ██   ██        "
-echo -e "   ██████   ██    ██  ██    ██  ██        "
+echo -e "  ______   ______   ____     ______    ____  "
+echo -e " / ___\\ \\ / /  _ \\ / ___|   / ___\\ \\  / /  _ \\ "
+echo -e "| |    \\ V /| |_) | |  _   | |    \\ V /| |_) |"
+echo -e "| |___  | | |  __/| |_| |  | |___  | | |  __/ "
+echo -e " \\____| |_| |_|    \\____|   \\____| |_| |_|    "
 echo -e "============================================="
-echo -e "              Cyber Password Generator           "
+echo -e "              Cyber Password Generator        "
 echo -e "============================================="
 echo -e "Tool Author   :  Tawfique Elahey"
 echo -e "Github        :  https://github.com/tawfique02/"
