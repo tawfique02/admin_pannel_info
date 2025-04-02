@@ -1,45 +1,41 @@
-admin_panel_finder() { if [ -z "$1" ]; then echo "Usage: admin_panel_finder <website>" return 1 fi
 
-website="$1"
-wordlist=(
-    "admin" "administrator" "login" "adminpanel" "admincp" "cpanel" "dashboard"
-    "user" "backend" "manage" "controlpanel" "moderator" "webadmin" "system"
-)
+[+] Welcome to the Admin Page Finder Script!
+[+] Select a mode:
+1. Basic Scan - Check admin pages only
+2. Advanced Scan - Check admin pages, IP info, ports, and vulnerability scan
+Enter your choice (1/2): 2
 
-echo "Scanning for admin panels on: $website"
-for path in "${wordlist[@]}"; do
-    url="http://$website/$path"
-    response=$(curl -s -o /dev/null -w "%{http_code}" "$url")
-    if [[ "$response" == "200" || "$response" == "301" || "$response" == "302" ]]; then
-        echo "[+] Found: $url (HTTP $response)"
-    else
-        echo "[-] Not found: $url"
-    fi
-done
+[+] Running Advanced Mode Scan...
 
-# Get IP info of the user
-echo "\n[+] Fetching your IP information..."
-curl -s http://ipinfo.io/json | jq .
+[+] Scanning for admin pages on: example.com
+[+] Found: http://example.com/admin (HTTP 200)
+[+] Found: http://example.com/login (HTTP 301)
+[-] Not found: http://example.com/administrator
 
-# Get IP info of the target website
-echo "\n[+] Fetching IP information of $website..."
-website_ip=$(dig +short "$website" | head -n 1)
-if [ -n "$website_ip" ]; then
-    curl -s "http://ipinfo.io/$website_ip/json" | jq .
-else
-    echo "[-] Could not retrieve IP for $website"
-fi
-
-# Check open and closed ports using Nmap (requires installation)
-echo "\n[+] Scanning open and closed ports on $website..."
-nmap -F "$website"
-
-# Basic website vulnerability scanning using Nikto (requires installation)
-echo "\n[+] Running basic vulnerability scan on $website..."
-nikto -h "$website"
-
+[+] Fetching IP information...
+{
+  "ip": "123.45.67.89",
+  "hostname": "example.com",
+  ...
 }
 
- # Usage:
+[+] Fetching IP information of example.com...
+{
+  "ip": "93.184.216.34",
+  "hostname": "example.com",
+  ...
+}
 
-# admin_panel_finder example.com 
+[+] Scanning open and closed ports on example.com...
+Starting Nmap 7.91 ( https://nmap.org ) at 2021-06-01 12:34 UTC
+Nmap scan report for example.com (93.184.216.34)
+Host is up (0.0078s latency).
+Not shown: 998 closed ports
+PORT   STATE SERVICE
+80/tcp open  http
+443/tcp open  https
+
+[+] Running basic vulnerability scan on example.com...
+- Nikto scan output goes here -
+
+[+] Scan complete.
