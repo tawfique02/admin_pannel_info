@@ -1,4 +1,3 @@
-
 #!/bin/bash
 
 # Colors for text
@@ -111,7 +110,8 @@ run_tool() {
         prompt_action
         
         # Ask user if they want to run again
-        read -p "${CYAN}${BOLD}Would you like to run again? (y/n): ${RESET}" choice
+        echo -e "${CYAN}${BOLD}Would you like to run again? (y/n): ${RESET}"
+        read choice
         if [[ ! "$choice" =~ ^[Yy]$ ]]; then
             echo -e "${CYAN}${BOLD}Thank you for using the Caesar Cipher Tool! Goodbye.${RESET}"
             break
