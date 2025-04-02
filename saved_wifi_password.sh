@@ -1,6 +1,6 @@
 
 #!/bin/bash
-
+# This is only run Linux (root)
 get_wifi_password_linux() {
     # Check if the user has root privileges (needed for accessing saved network passwords)
     if [ "$(id -u)" -ne 0 ]; then
