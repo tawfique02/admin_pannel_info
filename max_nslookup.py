@@ -66,7 +66,7 @@ def validate_hostname(hostname):
 
 # Function to display developer info in a box
 def display_developer_info():
-    developer_info = f"{Fore.CYAN}{Style.BRIGHT} Developed by Tawfique Elahey             {Style.RESET_ALL}"
+    developer_info = f"{Fore.CYAN}{Style.BRIGHT} Developed by Tawfique Elahey {Style.RESET_ALL}"
     box_width = len(developer_info) + 4  # Adding padding for the box
 
     # Print top border of the box
