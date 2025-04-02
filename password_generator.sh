@@ -27,7 +27,7 @@ echo "        ██████    ████   ███████  ██
 echo "============================================="
 echo "              Password Generator            "
 echo "============================================="
-echo -e "Tool Author   :  white-eagle"
+echo -e "Tool Author   :  BYTE-PHANTOM"
 echo -e "Github        :  https://github.com/tawfique02/"
 echo -e "Telegram      :  https://t.me/struct0"
 echo "============================================="
