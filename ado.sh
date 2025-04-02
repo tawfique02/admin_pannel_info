@@ -19,21 +19,13 @@ cipher_text() {
     local ascii
     local new_ascii
     local base
-    local base_ascii
 
-    # Check if action is 'encrypt' or 'decrypt'
     if [[ "$action" == "encrypt" ]]; then
         shift=$shift
     elif [[ "$action" == "decrypt" ]]; then
         shift=$((26 - shift))  # Reverse shift for decryption
     else
         echo -e "${RED}Error: Action must be 'encrypt' or 'decrypt'!${RESET}"
-        return 1
-    fi
-
-    # Ensure shift value is between 1 and 25
-    if [[ "$shift" -lt 1 || "$shift" -gt 25 ]]; then
-        echo -e "${RED}Error: The shift value must be between 1 and 25.${RESET}"
         return 1
     fi
 
@@ -51,10 +43,8 @@ cipher_text() {
             fi
             
             # Get ASCII value of the character
-            ascii=$(printf "%d" "$char")
-            
-            # Determine the ASCII value of the base letter ('A' or 'a')
-            base_ascii=$(printf "%d" "$base")
+            ascii=$(printf "%d" "'$char")
+            base_ascii=$(printf "%d" "'$base")
             
             # Shift character
             new_ascii=$(( (ascii - base_ascii + shift) % 26 + base_ascii ))
@@ -103,10 +93,10 @@ prompt_action() {
     # Input validation for shift value
     while true; do
         read -p "Enter the shift value (e.g., 3): " shift_value
-        if [[ "$shift_value" =~ ^[0-9]+$ ]] && [ "$shift_value" -ge 1 ] && [ "$shift_value" -le 25 ]; then
+        if [[ "$shift_value" =~ ^[0-9]+$ ]]; then
             break
         else
-            echo -e "${RED}Error: Please enter a valid number between 1 and 25 for the shift value!${RESET}"
+            echo -e "${RED}Error: Please enter a valid number for the shift value!${RESET}"
         fi
     done
     
@@ -119,7 +109,7 @@ run_tool() {
     while true; do
         prompt_action
         
-        # Ask user if they want to run again with properly reset color
+        # Ask user if they want to run again
         echo -e "${CYAN}${BOLD}Would you like to run again? (y/n): ${RESET}"
         read choice
         if [[ ! "$choice" =~ ^[Yy]$ ]]; then
