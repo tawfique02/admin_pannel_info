@@ -1,5 +1,5 @@
 #!/bin/bash
-
+# This script is developed by Md Tawfique Elahey. Don't copy this script and don't use it for unethical purposes.
 # Function to check if a command exists
 command_exists() {
     command -v "$1" &>/dev/null
