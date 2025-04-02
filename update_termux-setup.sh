@@ -1,3 +1,4 @@
+
 #!/bin/bash
 
 # Colors for text
@@ -22,22 +23,12 @@ display_in_box() {
 
 # Display script credit with box
 clear
-display_in_box "${BOLD}This script is developed by Tawfique Elahey${RESET}"
-
-# Function to update the repository
-update_repository() {
-    if [[ -f "update.sh" ]]; then
-        echo "Updating repository..."
-        bash update.sh
-        echo "Repository updated successfully!"
-    else
-        echo -e "${RED}Error: update.sh script not found! Please ensure it exists in the current directory.${RESET}"
-    fi
-}
+display_in_box "${BOLD}This script is developed by James${RESET}"
 
 # Function to install required packages
 install_packages() {
-    echo -e "${YELLOW}${BOLD}   Installing All Required Packages! Please Wait...${RESET}" | pv -qL 10
+    echo -e "${YELLOW}${BOLD}   Installing All Required Packages! Please Wait...${RESET}"
+     echo -e "${YELLOW}${BOLD}]────────────────────────────────────────────[${RESET}"| pv -qL 10
     packages=(
         "python"
         "cmatrix"
@@ -78,12 +69,6 @@ termux-setup-storage
 # Run the installation function
 install_packages
 
-# Prompt user for update
-read -p "Do you want to update the repository now? (y/n): " choice
-if [[ "$choice" =~ ^[Yy]$ ]]; then
-    update_repository
-fi
-
 # Script completed
 echo -e "${CYAN}${BOLD}Installation and setup are complete!${RESET}"
-display_in_box "${BOLD}This script is developed by Tawfique Elahey${RESET}"
+display_in_box "${BOLD}This script is developed by James${RESET}"
