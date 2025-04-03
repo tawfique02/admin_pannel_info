@@ -48,5 +48,5 @@ else
     echo -e "\033[1;33m[INFO] Skipping repository update."
 fi
 
-echo -e "\033[1;32m[INFO] Script execution completed. Enjoy your setup!"
+echo -e "\033[1;32m[INFO] Script execution completed. This script is developed by Md.Tawfique Elahey. If you find any problem please, contact me. And Enjoy your setup!"
 echo -e "\033[0m"
